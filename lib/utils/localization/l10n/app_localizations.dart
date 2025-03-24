@@ -154,6 +154,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register now'**
   String get loginScreenRegisterNow;
+
+  /// No description provided for @loginScreenEmailValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is not valid.'**
+  String get loginScreenEmailValid;
+
+  /// No description provided for @loginScreenPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid.'**
+  String get loginScreenPasswordValid;
+
+  /// No description provided for @registerScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get registerScreenTitle;
+
+  /// No description provided for @registerScreenEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get registerScreenEmail;
+
+  /// No description provided for @registerScreenHintEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get registerScreenHintEmail;
+
+  /// No description provided for @registerScreenCheckedPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password again'**
+  String get registerScreenCheckedPassword;
+
+  /// No description provided for @registerScreenPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get registerScreenPassword;
+
+  /// No description provided for @registerScreenHintPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get registerScreenHintPassword;
+
+  /// No description provided for @registerScreenHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'You have account?'**
+  String get registerScreenHaveAccount;
+
+  /// No description provided for @registerScreenLoginNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Login now'**
+  String get registerScreenLoginNow;
+
+  /// No description provided for @registerScreenEmailValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is not valid.'**
+  String get registerScreenEmailValid;
+
+  /// No description provided for @registerScreenPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid.'**
+  String get registerScreenPasswordValid;
+
+  /// No description provided for @registerScreenCheckedPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Refill Password is not equal password.'**
+  String get registerScreenCheckedPasswordValid;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -9,5 +9,19 @@
   "loginScreenForgotPassword": "Quên mật khẩu?",
   "loginScreenOtherWay": "Hoặc đăng nhập bằng",
   "loginScreenNotHaveAccount": "Chưa có tài khoản?",
-  "loginScreenRegisterNow": "Đăng kí ngay"
+  "loginScreenRegisterNow": "Đăng kí ngay",
+  "loginScreenEmailValid":"Email không hợp lệ.",
+  "loginScreenPasswordValid":"Password không hợp lệ.",
+
+  "registerScreenTitle": "Đăng kí",
+  "registerScreenEmail": "Email",
+  "registerScreenHintEmail": "Nhập email",
+  "registerScreenCheckedPassword": "Nhập lại mật khẩu",
+  "registerScreenPassword": "Mật khẩu",
+  "registerScreenHintPassword": "Nhập mật khẩu",
+  "registerScreenHaveAccount": "Đã có tài khoản?",
+  "registerScreenLoginNow": "Đăng nhập ngay",
+  "registerScreenEmailValid":"Email không hợp lệ.",
+  "registerScreenPasswordValid":"Password không hợp lệ.",
+  "registerScreenCheckedPasswordValid":"Mật khẩu nhập lại không giống mật khẩu."
 }

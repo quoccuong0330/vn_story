@@ -37,4 +37,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loginScreenRegisterNow => 'Register now';
+
+  @override
+  String get loginScreenEmailValid => 'Email is not valid.';
+
+  @override
+  String get loginScreenPasswordValid => 'Password is not valid.';
+
+  @override
+  String get registerScreenTitle => 'Register';
+
+  @override
+  String get registerScreenEmail => 'Email';
+
+  @override
+  String get registerScreenHintEmail => 'Enter your email';
+
+  @override
+  String get registerScreenCheckedPassword => 'Enter password again';
+
+  @override
+  String get registerScreenPassword => 'Password';
+
+  @override
+  String get registerScreenHintPassword => 'Enter password';
+
+  @override
+  String get registerScreenHaveAccount => 'You have account?';
+
+  @override
+  String get registerScreenLoginNow => 'Login now';
+
+  @override
+  String get registerScreenEmailValid => 'Email is not valid.';
+
+  @override
+  String get registerScreenPasswordValid => 'Password is not valid.';
+
+  @override
+  String get registerScreenCheckedPasswordValid => 'Refill Password is not equal password.';
 }

@@ -37,4 +37,43 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get loginScreenRegisterNow => 'Đăng kí ngay';
+
+  @override
+  String get loginScreenEmailValid => 'Email không hợp lệ.';
+
+  @override
+  String get loginScreenPasswordValid => 'Password không hợp lệ.';
+
+  @override
+  String get registerScreenTitle => 'Đăng kí';
+
+  @override
+  String get registerScreenEmail => 'Email';
+
+  @override
+  String get registerScreenHintEmail => 'Nhập email';
+
+  @override
+  String get registerScreenCheckedPassword => 'Nhập lại mật khẩu';
+
+  @override
+  String get registerScreenPassword => 'Mật khẩu';
+
+  @override
+  String get registerScreenHintPassword => 'Nhập mật khẩu';
+
+  @override
+  String get registerScreenHaveAccount => 'Đã có tài khoản?';
+
+  @override
+  String get registerScreenLoginNow => 'Đăng nhập ngay';
+
+  @override
+  String get registerScreenEmailValid => 'Email không hợp lệ.';
+
+  @override
+  String get registerScreenPasswordValid => 'Password không hợp lệ.';
+
+  @override
+  String get registerScreenCheckedPasswordValid => 'Mật khẩu nhập lại không giống mật khẩu.';
 }

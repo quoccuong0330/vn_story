@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vn_story/utils/color_palettes.dart';
 
-class CustomTextField extends StatefulWidget {
-  CustomTextField({
+class CustomPasswordTextFlied extends StatefulWidget {
+  CustomPasswordTextFlied({
     super.key,
     this.hintText,
     this.onChange,
@@ -16,17 +17,35 @@ class CustomTextField extends StatefulWidget {
   bool isValid;
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<CustomPasswordTextFlied> createState() =>
+      _CustomPasswordTextFliedState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomPasswordTextFliedState extends State<CustomPasswordTextFlied> {
+  bool _isShow = false;
+
+  void handleChangeIsShow() {
+    setState(() {
+      _isShow = !_isShow;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: !_isShow,
       onChanged: widget.onChange,
       focusNode: widget.focusNode,
       cursorColor: primaryColor,
       decoration: InputDecoration(
+        suffixIcon: GestureDetector(
+          onTap: handleChangeIsShow,
+          child: Icon(
+            !_isShow ? Icons.remove_red_eye_outlined : CupertinoIcons.eye_slash,
+            size: 24.0,
+            color: black1Color,
+          ),
+        ),
         hintText: widget.hintText,
         hintStyle: TextStyle(color: gray05Color),
         filled: true,

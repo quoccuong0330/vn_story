@@ -1,12 +1,15 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vn_story/utils/color_palettes.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
+import 'package:vn_story/utils/helpers/validate.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
 import 'package:vn_story/utils/text_styles.dart';
 import 'package:vn_story/widgets/buttons/button_icon_custom.dart';
 import 'package:vn_story/widgets/buttons/button_primary_custom.dart';
+import 'package:vn_story/widgets/text_field/custom_password_text_flied.dart';
 import 'package:vn_story/widgets/text_field/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,6 +21,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isRemember = false;
+  String _email = "";
+  String _password = "";
+  bool _isValidEmail = true;
+  bool _isValidPassword = true;
+
+  void handleLoginByAccount() {
+    setState(() {
+      _isValidEmail = Validate.isValidEmail(_email);
+      _isValidPassword = Validate.isValidPassword(_password);
+    });
+
+    log("$_email--$_password");
+    if (_isValidEmail && _isValidPassword) {
+      log("login via account");
+    } else {
+      log("Valid false");
+    }
+  }
 
   void handleLoginViaGoogle() {
     log("login via gg");
@@ -27,16 +48,13 @@ class _LoginScreenState extends State<LoginScreen> {
     log("login via Apple");
   }
 
-  void handleLoginByAccount() {
-    log("login via account");
-  }
-
   void handleForgotPassword() {
     log("forgot password");
   }
 
   void handleRegisterNow() {
     log("register");
+    context.push("/register");
   }
 
   void handleChangeIsRemember() {
@@ -61,7 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 24,
+              ),
 
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -117,24 +138,42 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 8),
                         CustomTextField(
+                          isValid: _isValidEmail,
                           hintText: lang.loginScreenHintEmail,
                           onChange: (email) {
-                            log(email);
+                            setState(() {
+                              _isValidEmail = true;
+                              _email = email;
+                            });
                           },
                         ),
-                        SizedBox(height: 20),
+                        _isValidEmail
+                            ? SizedBox(height: 20)
+                            : Text(
+                              lang.loginScreenEmailValid,
+                              style: body3Text.copyWith(color: stateErrorColor),
+                            ),
                         Text(
                           lang.loginScreenPassword,
                           style: labelText.copyWith(color: gray08Color),
                         ),
                         SizedBox(height: 8),
-                        CustomTextField(
+                        CustomPasswordTextFlied(
+                          isValid: _isValidPassword,
                           hintText: lang.loginScreenHintPassword,
                           onChange: (password) {
-                            log(password);
+                            setState(() {
+                              _isValidPassword = true;
+                              _password = password;
+                            });
                           },
                         ),
-                        SizedBox(height: 12),
+                        _isValidPassword
+                            ? SizedBox(height: 20)
+                            : Text(
+                              lang.loginScreenPasswordValid,
+                              style: body3Text.copyWith(color: stateErrorColor),
+                            ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -261,26 +300,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         SizedBox(height: 32),
-                        Center(
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: lang.loginScreenNotHaveAccount,
-                                  style: normalText.copyWith(
-                                    color: gray08Color,
-                                  ),
-                                ),
-                                WidgetSpan(child: SizedBox(width: 8)),
-                                TextSpan(
-                                  text: lang.loginScreenRegisterNow,
-                                  style: normalText
-                                      .merge(underlineText)
-                                      .copyWith(fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              lang.loginScreenNotHaveAccount,
+                              style: normalText.copyWith(color: gray08Color),
                             ),
-                          ),
+                            SizedBox(width: 4),
+                            GestureDetector(
+                              onTap: handleRegisterNow,
+                              child: Text(
+                                lang.loginScreenRegisterNow,
+                                style: normalText
+                                    .merge(underlineText)
+                                    .copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

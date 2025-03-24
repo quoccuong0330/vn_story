@@ -9,5 +9,19 @@
   "loginScreenForgotPassword": "Forgot password?",
   "loginScreenOtherWay": "Or sign up with",
   "loginScreenNotHaveAccount": "Do not have account?",
-  "loginScreenRegisterNow": "Register now"
+  "loginScreenRegisterNow": "Register now",
+  "loginScreenEmailValid":"Email is not valid.",
+  "loginScreenPasswordValid":"Password is not valid.",
+
+  "registerScreenTitle": "Register",
+  "registerScreenEmail": "Email",
+  "registerScreenHintEmail": "Enter your email",
+  "registerScreenCheckedPassword": "Enter password again",
+  "registerScreenPassword": "Password",
+  "registerScreenHintPassword": "Enter password",
+  "registerScreenHaveAccount": "You have account?",
+  "registerScreenLoginNow": "Login now",
+  "registerScreenEmailValid":"Email is not valid.",
+  "registerScreenPasswordValid":"Password is not valid.",
+  "registerScreenCheckedPasswordValid":"Refill Password is not equal password."
 }
