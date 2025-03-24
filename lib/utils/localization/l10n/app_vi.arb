@@ -1,0 +1,13 @@
+{
+  "@@locale": "vi",
+  "loginScreenLogin": "Đăng nhập",
+  "loginScreenEmail": "Email",
+  "loginScreenHintEmail": "Nhập email của bạn",
+  "loginScreenPassword": "Mật khẩu",
+  "loginScreenHintPassword": "Nhập mật khẩu của bạn",
+  "loginScreenRemember": "Ghi nhớ",
+  "loginScreenForgotPassword": "Quên mật khẩu?",
+  "loginScreenOtherWay": "Hoặc đăng nhập bằng",
+  "loginScreenNotHaveAccount": "Chưa có tài khoản?",
+  "loginScreenRegisterNow": "Đăng kí ngay"
+}

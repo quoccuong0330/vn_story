@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "loginScreenLogin": "Sign up",
+  "loginScreenEmail": "Email",
+  "loginScreenHintEmail": "Enter your email",
+  "loginScreenPassword": "Password",
+  "loginScreenHintPassword": "Enter password",
+  "loginScreenRemember": "Remember",
+  "loginScreenForgotPassword": "Forgot password?",
+  "loginScreenOtherWay": "Or sign up with",
+  "loginScreenNotHaveAccount": "Do not have account?",
+  "loginScreenRegisterNow": "Register now"
+}
