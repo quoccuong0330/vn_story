@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vn_story/routers/route_utils.dart';
-import 'package:vn_story/screens/login/ui/login_screen.dart';
+import 'package:vn_story/screens/auth/login/ui/login_screen.dart';
+import 'package:vn_story/screens/home/home/ui/home_screen.dart';
 import 'package:vn_story/screens/not_found/ui/not_found_screen.dart';
-import 'package:vn_story/screens/register/ui/register_screen.dart';
-import 'package:vn_story/screens/splash/ui/splash_screen.dart';
+import 'package:vn_story/screens/auth/register/ui/register_screen.dart';
+import 'package:vn_story/screens/auth/splash/ui/splash_screen.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -28,6 +29,11 @@ class AppRouter {
         path: PAGES.register.screenPath,
         name: PAGES.register.screenName,
         builder: (context, state) => RegisterScreen(),
+      ),
+      GoRoute(
+        path: PAGES.home.screenPath,
+        name: PAGES.home.screenName,
+        builder: (context, state) => HomeScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

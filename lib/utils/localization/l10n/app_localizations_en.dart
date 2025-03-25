@@ -76,4 +76,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get registerScreenCheckedPasswordValid => 'Refill Password is not equal password.';
+
+  @override
+  String get dialogOtpTitle => 'Confirm';
+
+  @override
+  String get dialogOtpSubTitle => 'Enter your OTP has been send your email';
+
+  @override
+  String get dialogOtpNoReceive => 'Not receive OTP';
+
+  @override
+  String get dialogOtpResend => 'Resend';
 }

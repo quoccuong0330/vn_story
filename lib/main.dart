@@ -5,8 +5,9 @@ import 'package:vn_story/providers/locale_provider.dart';
 import 'package:vn_story/routers/app_router.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MultiProvider(
       providers: [

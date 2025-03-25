@@ -23,5 +23,10 @@
   "registerScreenLoginNow": "Đăng nhập ngay",
   "registerScreenEmailValid":"Email không hợp lệ.",
   "registerScreenPasswordValid":"Password không hợp lệ.",
-  "registerScreenCheckedPasswordValid":"Mật khẩu nhập lại không giống mật khẩu."
+  "registerScreenCheckedPasswordValid":"Mật khẩu nhập lại không giống mật khẩu.",
+
+  "dialogOtpTitle":"Xác minh",
+  "dialogOtpSubTitle":"Nhập mã xác minh đã được gởi đến email của bạn",
+  "dialogOtpNoReceive":"Không nhận được OTP?",
+  "dialogOtpResend":"Gửi lại"
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:vn_story/utils/color_palettes.dart';
 import 'package:vn_story/utils/text_styles.dart';
 
 class ButtonPrimaryCustom extends StatelessWidget {
@@ -21,7 +22,25 @@ class ButtonPrimaryCustom extends StatelessWidget {
       width: double.infinity,
       height: 44,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: colorBg),
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.disabled)) {
+              return Color.lerp(
+                colorBg,
+                whiteColor,
+                0.2,
+              ); // Remove background when disabled
+            }
+            return colorBg;
+          }),
+          shadowColor: WidgetStateProperty.all(
+            Colors.transparent,
+          ), // Remove shadow
+          padding: WidgetStateProperty.all(EdgeInsets.zero), // Remove padding
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          ), // No border radius
+        ),
         onPressed: onPressed,
         child: Text(title!, style: normalText.copyWith(color: colorText)),
       ),

@@ -6,7 +6,7 @@ extension AppPageExtension on PAGES {
       case PAGES.splash:
         return "/splash";
       case PAGES.home:
-        return "/";
+        return "/home";
       case PAGES.login:
         return "/login";
       case PAGES.error:

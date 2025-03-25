@@ -232,6 +232,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Refill Password is not equal password.'**
   String get registerScreenCheckedPasswordValid;
+
+  /// No description provided for @dialogOtpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get dialogOtpTitle;
+
+  /// No description provided for @dialogOtpSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your OTP has been send your email'**
+  String get dialogOtpSubTitle;
+
+  /// No description provided for @dialogOtpNoReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Not receive OTP'**
+  String get dialogOtpNoReceive;
+
+  /// No description provided for @dialogOtpResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get dialogOtpResend;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
