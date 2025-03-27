@@ -1,4 +1,4 @@
-enum PAGES { login, home, error, splash, register }
+enum PAGES { login, home, error, splash, register, otpRegister }
 
 extension AppPageExtension on PAGES {
   String get screenPath {
@@ -13,6 +13,8 @@ extension AppPageExtension on PAGES {
         return "/error";
       case PAGES.register:
         return "/register";
+      case PAGES.otpRegister:
+        return "/otp-register";
     }
   }
 
@@ -28,6 +30,8 @@ extension AppPageExtension on PAGES {
         return "ERROR";
       case PAGES.register:
         return "REGISTER";
+      case PAGES.otpRegister:
+        return "OTP REGISTER";
     }
   }
 
@@ -43,6 +47,8 @@ extension AppPageExtension on PAGES {
         return "Error";
       case PAGES.register:
         return "Register";
+      case PAGES.otpRegister:
+        return "Otp Register";
     }
   }
 }

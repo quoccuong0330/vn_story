@@ -25,9 +25,10 @@
   "registerScreenPasswordValid":"Password is not valid.",
   "registerScreenCheckedPasswordValid":"Refill Password is not equal password.",
 
-  "dialogOtpTitle":"Confirm",
-  "dialogOtpSubTitle":"Enter your OTP has been send your email",
-  "dialogOtpNoReceive":"Not receive OTP",
-  "dialogOtpResend":"Resend"
+  "otpScreenTitle":"Confirm",
+  "otpScreenSubTitle":"Enter your OTP has been send your email",
+  "otpScreenNoReceive":"Not receive OTP?",
+  "otpScreenResend":"Resend",
+  "otpScreenWrong":"Your OTP entered is not correct"
 
 }

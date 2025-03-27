@@ -25,8 +25,9 @@
   "registerScreenPasswordValid":"Password không hợp lệ.",
   "registerScreenCheckedPasswordValid":"Mật khẩu nhập lại không giống mật khẩu.",
 
-  "dialogOtpTitle":"Xác minh",
-  "dialogOtpSubTitle":"Nhập mã xác minh đã được gởi đến email của bạn",
-  "dialogOtpNoReceive":"Không nhận được OTP?",
-  "dialogOtpResend":"Gửi lại"
+  "otpScreenTitle":"Xác minh",
+  "otpScreenSubTitle":"Nhập mã xác minh đã được gởi đến email của bạn",
+  "otpScreenNoReceive":"Không nhận được OTP?",
+  "otpScreenResend":"Gửi lại",
+  "otpScreenWrong":"OTP bạn vừa nhập không chính xác"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vn_story/routers/route_utils.dart';
 import 'package:vn_story/screens/auth/login/ui/login_screen.dart';
+import 'package:vn_story/screens/auth/otp/ui/otp_screen.dart';
 import 'package:vn_story/screens/home/home/ui/home_screen.dart';
 import 'package:vn_story/screens/not_found/ui/not_found_screen.dart';
 import 'package:vn_story/screens/auth/register/ui/register_screen.dart';
@@ -34,6 +35,11 @@ class AppRouter {
         path: PAGES.home.screenPath,
         name: PAGES.home.screenName,
         builder: (context, state) => HomeScreen(),
+      ),
+      GoRoute(
+        path: PAGES.otpRegister.screenPath,
+        name: PAGES.otpRegister.screenName,
+        builder: (context, state) => OtpScreen(),
       ),
     ],
     errorBuilder: (context, state) => const NotFoundScreen(),

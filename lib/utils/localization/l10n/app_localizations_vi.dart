@@ -78,14 +78,17 @@ class AppLocalizationsVi extends AppLocalizations {
   String get registerScreenCheckedPasswordValid => 'Mật khẩu nhập lại không giống mật khẩu.';
 
   @override
-  String get dialogOtpTitle => 'Xác minh';
+  String get otpScreenTitle => 'Xác minh';
 
   @override
-  String get dialogOtpSubTitle => 'Nhập mã xác minh đã được gởi đến email của bạn';
+  String get otpScreenSubTitle => 'Nhập mã xác minh đã được gởi đến email của bạn';
 
   @override
-  String get dialogOtpNoReceive => 'Không nhận được OTP?';
+  String get otpScreenNoReceive => 'Không nhận được OTP?';
 
   @override
-  String get dialogOtpResend => 'Gửi lại';
+  String get otpScreenResend => 'Gửi lại';
+
+  @override
+  String get otpScreenWrong => 'OTP bạn vừa nhập không chính xác';
 }

@@ -36,13 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
     if (_isValidEmail && _isValidPassword && _isValidCheckPassword) {
       //code
-      DialogsCustom.showOtpDialog(
-        context,
-        onChange: (value) => handleOTP(value),
-        title: AppLocalizations.of(context).dialogOtpTitle,
-        subTitle: AppLocalizations.of(context).dialogOtpSubTitle,
-        timeCountDown: 0.15,
-      );
+      context.go('/otp-register');
     } else {
       //code
     }
