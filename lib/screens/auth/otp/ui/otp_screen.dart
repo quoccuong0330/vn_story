@@ -3,11 +3,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:vn_story/utils/color_palettes.dart';
+import 'package:provider/provider.dart';
+import 'package:vn_story/blocs/blocs.dart';
+import 'package:vn_story/cubits/cubits.dart';
+import 'package:vn_story/models/models.dart';
+import 'package:vn_story/models/requests/requests.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/helpers/format_time.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
-import 'package:vn_story/utils/text_styles.dart';
+import 'package:vn_story/utils/constants/text_styles.dart';
 import 'package:vn_story/widgets/buttons/button_primary_custom.dart';
 import 'package:vn_story/widgets/dialogs/dialogs_custom.dart';
 import 'package:vn_story/widgets/layouts/auth_layout.dart';
@@ -26,6 +32,7 @@ class OtpScreenState extends State<OtpScreen> {
   bool _isValid = false;
   final double timeCountDown = 10;
   bool _otpWrong = true;
+  bool _isProcessing = false;
 
   @override
   void initState() {
@@ -37,6 +44,10 @@ class OtpScreenState extends State<OtpScreen> {
   @override
   void dispose() {
     _timer?.cancel();
+    _otp = "";
+    _isValid = false;
+    _otpWrong = true;
+    _isProcessing = false;
     super.dispose();
   }
 
@@ -53,25 +64,58 @@ class OtpScreenState extends State<OtpScreen> {
     });
   }
 
-  void handleCheckOtp() {
-    if (_otp.length == 4) {
-      if (true) {
-        DialogsCustom.showCompleteDialog(context);
-      } else {}
-      log(_otp);
+  void handleCheckOtp(
+    BuildContext context,
+    UserCubit cubit,
+    String email,
+    String password,
+  ) async {
+    if (!context.mounted) return;
+
+    try {
+      AppResponse res = await cubit.confirmOtp(
+        RegisterRequests(email: email, password: password, otp: _otp),
+      );
+
+      if (!context.mounted) return;
+
+      if (res.success) {
+        if (context.mounted) {
+          context.read<AuthBloc>().add(
+            Authenticated(isAuthenticated: true, token: res.data["access"]),
+          );
+          DialogsCustom.showCompleteDialog(context);
+        }
+      } else {
+        if (context.mounted) {
+          setState(() {
+            _otpWrong = false;
+          });
+        }
+      }
+    } catch (e) {
+      print("error: $e");
     }
   }
 
-  void handleReSendOTP() {
+  void handleReSendOTP(UserCubit cubit, String email, String password) async {
     setState(() {
       timeLeft = 20;
       startTimer(timeLeft);
     });
+    await cubit.signUpOtp(RegisterRequests(email: email, password: password));
   }
 
   @override
   Widget build(BuildContext context) {
     AppLocalizations lang = AppLocalizations.of(context);
+    GoRouterState state = GoRouterState.of(context);
+    final data = state.extra as Map<String, dynamic>?;
+    final cubit = context.read<UserCubit>();
+
+    String email = data != null ? data['email'] : null;
+    String password = data != null ? data['password'] : null;
+    print('email: $email, password: $password');
 
     return AuthLayout(
       title: lang.otpScreenTitle,
@@ -165,7 +209,9 @@ class OtpScreenState extends State<OtpScreen> {
                       SizedBox(width: 5),
                       timeLeft == 0
                           ? GestureDetector(
-                            onTap: () => handleReSendOTP(),
+                            onTap: () {
+                              handleReSendOTP(cubit, email, password);
+                            },
                             child: Text(
                               lang.otpScreenResend,
                               style: body3Text.copyWith(color: accentColor),
@@ -179,6 +225,7 @@ class OtpScreenState extends State<OtpScreen> {
                   ),
                 ),
                 ButtonPrimaryCustom(
+                  isProcessing: _isProcessing,
                   colorBg:
                       _isValid
                           ? primaryColor
@@ -188,7 +235,7 @@ class OtpScreenState extends State<OtpScreen> {
                   onPressed:
                       _isValid
                           ? () {
-                            handleCheckOtp();
+                            handleCheckOtp(context, cubit, email, password);
                           }
                           : null,
                 ),

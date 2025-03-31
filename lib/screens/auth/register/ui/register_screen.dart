@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vn_story/utils/color_palettes.dart';
+import 'package:provider/provider.dart';
+import 'package:vn_story/cubits/cubits.dart';
+import 'package:vn_story/models/models.dart';
+import 'package:vn_story/models/requests/register_requests.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/helpers/validate.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
-import 'package:vn_story/utils/text_styles.dart';
+import 'package:vn_story/utils/constants/text_styles.dart';
 import 'package:vn_story/widgets/buttons/button_primary_custom.dart';
-import 'package:vn_story/widgets/dialogs/dialogs_custom.dart';
 import 'package:vn_story/widgets/layouts/auth_layout.dart';
 import 'package:vn_story/widgets/text_field/custom_password_text_flied.dart';
 import 'package:vn_story/widgets/text_field/custom_text_field.dart';
@@ -21,24 +24,44 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   bool _isValidEmail = true;
+  bool _isValidEmailExist = true;
   bool _isValidPassword = true;
   bool _isValidCheckPassword = true;
+  bool _isProcessing = false;
 
   String _email = '';
   String _password = '';
   String _checkPassword = '';
 
-  void handleRegisterByAccount() {
+  void handleRegisterByAccount(UserCubit cubit) async {
     setState(() {
       _isValidEmail = Validate.isValidEmail(_email);
       _isValidPassword = Validate.isValidPassword(_password);
       _isValidCheckPassword = Validate.isEqual(_password, _checkPassword);
     });
     if (_isValidEmail && _isValidPassword && _isValidCheckPassword) {
-      //code
-      context.go('/otp-register');
-    } else {
-      //code
+      setState(() {
+        _isProcessing = true;
+      });
+      await Future.delayed(Duration(seconds: 2));
+
+      AppResponse res = (await cubit.signUpOtp(
+        RegisterRequests(email: _email, password: _password),
+      ));
+      setState(() {
+        _isProcessing = false;
+      });
+      if (res.success && context.mounted) {
+        context.go(
+          '/otp-register',
+          extra: {'email': _email, 'password': _password},
+        );
+      } else {
+        setState(() {
+          _isValidEmailExist = false;
+          _isValidEmail = false;
+        });
+      }
     }
   }
 
@@ -56,6 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<UserCubit>();
     AppLocalizations lang = AppLocalizations.of(context);
     return AuthLayout(
       title: lang.registerScreenTitle,
@@ -86,10 +110,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             _isValidEmail
                 ? SizedBox(height: 20)
-                : SizedBox(
+                : _isValidEmailExist
+                ? SizedBox(
                   height: 20,
                   child: Text(
                     lang.registerScreenEmailValid,
+                    style: body3Text.copyWith(color: stateErrorColor),
+                  ),
+                )
+                : SizedBox(
+                  height: 20,
+                  child: Text(
+                    lang.registerScreenEmailExist,
                     style: body3Text.copyWith(color: stateErrorColor),
                   ),
                 ),
@@ -142,10 +174,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
             ButtonPrimaryCustom(
+              isProcessing: _isProcessing,
               title: lang.registerScreenTitle,
               colorBg: primaryColor,
               colorText: whiteColor,
-              onPressed: handleRegisterByAccount,
+              onPressed: () => handleRegisterByAccount(cubit),
             ),
             SizedBox(height: 32),
             Row(

@@ -1,8 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vn_story/utils/color_palettes.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
 import 'package:vn_story/widgets/buttons/button_primary_custom.dart';
 
@@ -50,12 +48,13 @@ class _CompleteDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ButtonPrimaryCustom(
+              isProcessing: false,
               title: "Bắt đầu khám phá",
               colorBg: primaryColor,
               colorText: whiteColor,
-              onPressed:  () {
-
-                context.push("/login");
+              onPressed: () {
+                Navigator.pop(context);
+                context.go("/home");
               },
             ),
           ],

@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vn_story/network_service/api_response/login_response.dart';
-import 'package:vn_story/screens/auth/login/controller/login_models.dart';
-import 'package:vn_story/services/api_services/auth_api_services.dart';
-import 'package:vn_story/utils/color_palettes.dart';
+import 'package:provider/provider.dart';
+import 'package:vn_story/cubits/cubits.dart';
+import 'package:vn_story/models/models.dart';
+import 'package:vn_story/models/requests/requests.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
-import 'package:vn_story/utils/helpers/validate.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
-import 'package:vn_story/utils/text_styles.dart';
+import 'package:vn_story/utils/constants/text_styles.dart';
 import 'package:vn_story/widgets/buttons/button_icon_custom.dart';
 import 'package:vn_story/widgets/buttons/button_primary_custom.dart';
 import 'package:vn_story/widgets/layouts/auth_layout.dart';
@@ -31,37 +31,14 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isValidPassword = true;
   bool _isIncorrectAccount = true;
 
-  Future<bool?> _fetchData() async {
-    try {
-      final res = await ApiService().login(
-        LoginModels(_email, _password).toMap(),
-      );
-      return res;
-    } on Exception catch (e) {
-      print('Error: $e');
-    }
-  }
-
-  void handleLoginByAccount() async {
-    setState(() {
-      _isValidEmail = Validate.isValidEmail(_email);
-      _isValidPassword = Validate.isValidPassword(_password);
-    });
-
-    log("$_email--$_password");
-    if (_isValidEmail && _isValidPassword) {
-      final data = await _fetchData();
-      log(data.toString());
-      if (data == true) {
-        context.push("/home");
-      } else {
-        setState(() {
-          _isIncorrectAccount = true;
-        });
-      }
-    } else {
-      log("Valid false");
-    }
+  void handleSignUpByAccount(UserCubit cubit) async {
+    AppResponse res = await cubit.signIn(
+      LoginRequest(email: _email, password: _password),
+    );
+    log(res.success.toString());
+    if (res.success) {
+      context.go("/home");
+    } else {}
   }
 
   void handleLoginViaGoogle() {
@@ -91,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations lang = AppLocalizations.of(context);
+    final cubit = context.read<UserCubit>();
     return AuthLayout(
       title: lang.loginScreenLogin,
       widget: Container(
@@ -188,10 +166,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: body3Text.copyWith(color: stateErrorColor),
                 ),
             ButtonPrimaryCustom(
+              isProcessing: false,
               title: lang.loginScreenLogin,
               colorBg: primaryColor,
               colorText: whiteColor,
-              onPressed: handleLoginByAccount,
+              onPressed: () => handleSignUpByAccount(cubit),
             ),
             SizedBox(height: 32),
             Row(
@@ -284,8 +263,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-extension on Future {
-  get statusCode => null;
 }

@@ -179,6 +179,12 @@ abstract class AppLocalizations {
   /// **'Email'**
   String get registerScreenEmail;
 
+  /// No description provided for @registerScreenEmailExist.
+  ///
+  /// In en, this message translates to:
+  /// **'This email already has been register'**
+  String get registerScreenEmailExist;
+
   /// No description provided for @registerScreenHintEmail.
   ///
   /// In en, this message translates to:

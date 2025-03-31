@@ -51,6 +51,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerScreenEmail => 'Email';
 
   @override
+  String get registerScreenEmailExist => 'This email already has been register';
+
+  @override
   String get registerScreenHintEmail => 'Enter your email';
 
   @override

@@ -12,7 +12,7 @@ class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
   static final GoRouter _router = GoRouter(
-    initialLocation: PAGES.login.screenPath,
+    initialLocation: PAGES.splash.screenPath,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: [

@@ -51,6 +51,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get registerScreenEmail => 'Email';
 
   @override
+  String get registerScreenEmailExist => 'Email này đã được đăng kí';
+
+  @override
   String get registerScreenHintEmail => 'Nhập email';
 
   @override

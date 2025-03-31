@@ -15,6 +15,7 @@
 
   "registerScreenTitle": "Register",
   "registerScreenEmail": "Email",
+  "registerScreenEmailExist": "This email already has been register",
   "registerScreenHintEmail": "Enter your email",
   "registerScreenCheckedPassword": "Enter password again",
   "registerScreenPassword": "Password",

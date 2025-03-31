@@ -22,9 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       _timer = Timer(Duration(seconds: 3), () {
         if (mounted) {
           context.go('/login');
-          log("message");
         }
-        log("message1");
       });
     });
   }

@@ -16,6 +16,7 @@
   "registerScreenTitle": "Đăng kí",
   "registerScreenEmail": "Email",
   "registerScreenHintEmail": "Nhập email",
+  "registerScreenEmailExist": "Email này đã được đăng kí",
   "registerScreenCheckedPassword": "Nhập lại mật khẩu",
   "registerScreenPassword": "Mật khẩu",
   "registerScreenHintPassword": "Nhập mật khẩu",

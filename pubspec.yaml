@@ -46,11 +46,20 @@ dependencies:
   keyboard_avoider: ^0.2.0
   dotenv: ^4.2.0
   flutter_dotenv: ^5.2.1
-  dio: ^5.8.0+1
-  freeze: ^1.0.0
-  freezed_annotation: ^3.0.0
+  dio: ^5.8.0
+  freezed_annotation: ^2.4.4
+  freezed: ^2.5.8
   json_serializable: ^6.9.4
   get: ^4.7.2
+  build_runner: ^2.4.15
+  json_annotation: ^4.9.0
+  equatable: ^2.0.7
+  pretty_dio_logger: ^1.4.0
+  bloc: ^9.0.0
+  hydrated_bloc: ^10.0.0
+  path_provider: ^2.1.5
+  flutter_bloc: ^9.1.0
+  validators: ^3.0.0
 
 dev_dependencies:
   flutter_test:

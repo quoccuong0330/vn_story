@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vn_story/utils/color_palettes.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
 
 class CustomPasswordTextFlied extends StatefulWidget {
   CustomPasswordTextFlied({
