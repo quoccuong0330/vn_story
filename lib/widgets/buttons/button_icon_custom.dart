@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vn_story/utils/color_palettes.dart';
-import 'package:vn_story/utils/text_styles.dart';
+import 'package:vn_story/utils/constants/color_palettes.dart';
+import 'package:vn_story/utils/constants/text_styles.dart';
 
 class ButtonIconCustom extends StatelessWidget {
   const ButtonIconCustom({

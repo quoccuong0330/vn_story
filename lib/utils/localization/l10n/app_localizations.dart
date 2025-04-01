@@ -154,6 +154,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register now'**
   String get loginScreenRegisterNow;
+
+  /// No description provided for @loginScreenEmailValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is not valid.'**
+  String get loginScreenEmailValid;
+
+  /// No description provided for @loginScreenPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid.'**
+  String get loginScreenPasswordValid;
+
+  /// No description provided for @loginScreenIncorrectAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Email or password is not correct.'**
+  String get loginScreenIncorrectAccount;
+
+  /// No description provided for @registerScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get registerScreenTitle;
+
+  /// No description provided for @registerScreenEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get registerScreenEmail;
+
+  /// No description provided for @registerScreenEmailExist.
+  ///
+  /// In en, this message translates to:
+  /// **'This email already has been register'**
+  String get registerScreenEmailExist;
+
+  /// No description provided for @registerScreenHintEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get registerScreenHintEmail;
+
+  /// No description provided for @registerScreenCheckedPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password again'**
+  String get registerScreenCheckedPassword;
+
+  /// No description provided for @registerScreenPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get registerScreenPassword;
+
+  /// No description provided for @registerScreenHintPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get registerScreenHintPassword;
+
+  /// No description provided for @registerScreenHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'You have account?'**
+  String get registerScreenHaveAccount;
+
+  /// No description provided for @registerScreenLoginNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Login now'**
+  String get registerScreenLoginNow;
+
+  /// No description provided for @registerScreenEmailValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is not valid.'**
+  String get registerScreenEmailValid;
+
+  /// No description provided for @registerScreenPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is not valid.'**
+  String get registerScreenPasswordValid;
+
+  /// No description provided for @registerScreenCheckedPasswordValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Refill Password is not equal password.'**
+  String get registerScreenCheckedPasswordValid;
+
+  /// No description provided for @otpScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get otpScreenTitle;
+
+  /// No description provided for @otpScreenSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your OTP has been send your email'**
+  String get otpScreenSubTitle;
+
+  /// No description provided for @otpScreenNoReceive.
+  ///
+  /// In en, this message translates to:
+  /// **'Not receive OTP?'**
+  String get otpScreenNoReceive;
+
+  /// No description provided for @otpScreenEmailDoesNotExist.
+  ///
+  /// In en, this message translates to:
+  /// **'Email does not exist'**
+  String get otpScreenEmailDoesNotExist;
+
+  /// No description provided for @otpScreenResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get otpScreenResend;
+
+  /// No description provided for @otpScreenWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Your OTP entered is not correct'**
+  String get otpScreenWrong;
+
+  /// No description provided for @forgotScreenTittle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password'**
+  String get forgotScreenTittle;
+
+  /// No description provided for @forgotScreenResetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get forgotScreenResetTitle;
+
+  /// No description provided for @dialogComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get dialogComplete;
+
+  /// No description provided for @dialogTitleRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account was confirm!'**
+  String get dialogTitleRegister;
+
+  /// No description provided for @dialogStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start to discover'**
+  String get dialogStart;
+
+  /// No description provided for @dialogLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get dialogLogin;
+
+  /// No description provided for @dialogTitleForgot.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password was successfully changed.'**
+  String get dialogTitleForgot;
+
+  /// No description provided for @continueKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueKey;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -9,5 +9,40 @@
   "loginScreenForgotPassword": "Forgot password?",
   "loginScreenOtherWay": "Or sign up with",
   "loginScreenNotHaveAccount": "Do not have account?",
-  "loginScreenRegisterNow": "Register now"
+  "loginScreenRegisterNow": "Register now",
+  "loginScreenEmailValid": "Email is not valid.",
+  "loginScreenPasswordValid": "Password is not valid.",
+  "loginScreenIncorrectAccount": "Email or password is not correct.",
+
+  "registerScreenTitle": "Register",
+  "registerScreenEmail": "Email",
+  "registerScreenEmailExist": "This email already has been register",
+  "registerScreenHintEmail": "Enter your email",
+  "registerScreenCheckedPassword": "Enter password again",
+  "registerScreenPassword": "Password",
+  "registerScreenHintPassword": "Enter password",
+  "registerScreenHaveAccount": "You have account?",
+  "registerScreenLoginNow": "Login now",
+  "registerScreenEmailValid":"Email is not valid.",
+  "registerScreenPasswordValid":"Password is not valid.",
+  "registerScreenCheckedPasswordValid":"Refill Password is not equal password.",
+
+  "otpScreenTitle":"Confirm",
+  "otpScreenSubTitle":"Enter your OTP has been send your email",
+  "otpScreenNoReceive":"Not receive OTP?",
+  "otpScreenEmailDoesNotExist":"Email does not exist",
+  "otpScreenResend":"Resend",
+  "otpScreenWrong":"Your OTP entered is not correct",
+
+  "forgotScreenTittle": "Forgot password",
+  "forgotScreenResetTitle": "Reset password",
+
+  "dialogComplete": "Completed",
+  "dialogTitleRegister": "Your account was confirm!",
+  "dialogStart": "Start to discover",
+  "dialogLogin": "Login",
+  "dialogTitleForgot": "Your password was successfully changed.",
+
+  
+  "continueKey": "Continue"
 }
