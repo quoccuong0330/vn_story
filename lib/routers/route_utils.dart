@@ -1,4 +1,14 @@
-enum PAGES { login, home, error, splash, register, otpRegister }
+enum PAGES {
+  login,
+  home,
+  error,
+  splash,
+  register,
+  otpRegister,
+  forgot,
+  otpForgot,
+  resetPassword,
+}
 
 extension AppPageExtension on PAGES {
   String get screenPath {
@@ -15,6 +25,12 @@ extension AppPageExtension on PAGES {
         return "/register";
       case PAGES.otpRegister:
         return "/otp-register";
+      case PAGES.forgot:
+        return "/forgot";
+      case PAGES.otpForgot:
+        return "/otp-forgot";
+      case PAGES.resetPassword:
+        return "/reset-password";
     }
   }
 
@@ -32,6 +48,12 @@ extension AppPageExtension on PAGES {
         return "REGISTER";
       case PAGES.otpRegister:
         return "OTP REGISTER";
+      case PAGES.forgot:
+        return "FORGOT";
+      case PAGES.otpForgot:
+        return "OTP FORGOT";
+      case PAGES.resetPassword:
+        return "RESET PASSWORD";
     }
   }
 
@@ -49,6 +71,12 @@ extension AppPageExtension on PAGES {
         return "Register";
       case PAGES.otpRegister:
         return "Otp Register";
+      case PAGES.forgot:
+        return "Forgot";
+      case PAGES.otpForgot:
+        return "Otp Forgot";
+      case PAGES.resetPassword:
+        return "Reset password";
     }
   }
 }

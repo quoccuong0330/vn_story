@@ -2,29 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:vn_story/models/app_response.dart';
 
 class AppInterceptors extends Interceptor {
-  static AppInterceptors? _singleton;
-
-  AppInterceptors._internal();
-
-  factory AppInterceptors() {
-    return _singleton ??= AppInterceptors._internal();
-  }
-
-  String _accessToken = "";
-  void updateAccessToken(String acc) {
-    _accessToken = acc;
-  }
+  static String? accessToken;
 
   @override
-  void onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    if (_accessToken != "" && _accessToken.isNotEmpty) {
-      options.headers['Authorization'] = 'Bearer $_accessToken';
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    if (accessToken != null) {
+      options.headers['Authorization'] = 'Bearer $accessToken';
     }
 
-    return handler.next(options); // Tiếp tục gửi request
+    return handler.next(options); // Tiếp tục request
   }
 
   @override
@@ -36,6 +22,19 @@ class AppInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     print("Error Interceptor: ${err.message}");
+    if (err.response?.statusCode == 404) {
+      final fallbackResponse = Response(
+        requestOptions: err.requestOptions,
+        statusCode: 404,
+        data: {
+          "error": true,
+          "message": "Không tìm thấy tài nguyên.",
+          "data": null,
+        },
+      );
+
+      return handler.resolve(fallbackResponse);
+    }
 
     final errorResponse = Response(
       requestOptions: err.requestOptions,

@@ -167,6 +167,12 @@ abstract class AppLocalizations {
   /// **'Password is not valid.'**
   String get loginScreenPasswordValid;
 
+  /// No description provided for @loginScreenIncorrectAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Email or password is not correct.'**
+  String get loginScreenIncorrectAccount;
+
   /// No description provided for @registerScreenTitle.
   ///
   /// In en, this message translates to:
@@ -257,6 +263,12 @@ abstract class AppLocalizations {
   /// **'Not receive OTP?'**
   String get otpScreenNoReceive;
 
+  /// No description provided for @otpScreenEmailDoesNotExist.
+  ///
+  /// In en, this message translates to:
+  /// **'Email does not exist'**
+  String get otpScreenEmailDoesNotExist;
+
   /// No description provided for @otpScreenResend.
   ///
   /// In en, this message translates to:
@@ -268,6 +280,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your OTP entered is not correct'**
   String get otpScreenWrong;
+
+  /// No description provided for @forgotScreenTittle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password'**
+  String get forgotScreenTittle;
+
+  /// No description provided for @forgotScreenResetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get forgotScreenResetTitle;
+
+  /// No description provided for @dialogComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get dialogComplete;
+
+  /// No description provided for @dialogTitleRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account was confirm!'**
+  String get dialogTitleRegister;
+
+  /// No description provided for @dialogStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start to discover'**
+  String get dialogStart;
+
+  /// No description provided for @dialogLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get dialogLogin;
+
+  /// No description provided for @dialogTitleForgot.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password was successfully changed.'**
+  String get dialogTitleForgot;
+
+  /// No description provided for @continueKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueKey;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

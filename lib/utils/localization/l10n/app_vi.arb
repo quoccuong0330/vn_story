@@ -12,6 +12,8 @@
   "loginScreenRegisterNow": "Đăng kí ngay",
   "loginScreenEmailValid":"Email không hợp lệ.",
   "loginScreenPasswordValid":"Password không hợp lệ.",
+  "loginScreenIncorrectAccount": "Email hoặc mật khẩu không hợp lệ.",
+
 
   "registerScreenTitle": "Đăng kí",
   "registerScreenEmail": "Email",
@@ -30,5 +32,18 @@
   "otpScreenSubTitle":"Nhập mã xác minh đã được gởi đến email của bạn",
   "otpScreenNoReceive":"Không nhận được OTP?",
   "otpScreenResend":"Gửi lại",
-  "otpScreenWrong":"OTP bạn vừa nhập không chính xác"
+  "otpScreenWrong":"OTP bạn vừa nhập không chính xác",
+  "otpScreenEmailDoesNotExist":"Email không tồn tại",
+
+
+  "forgotScreenTittle": "Quên mật khẩu",
+  "forgotScreenResetTitle": "Đặt lại mật khẩu",
+
+  "dialogComplete": "Hoàn tất",
+  "dialogTitleRegister": "Tài khoản của bạn đã được xác nhận!",
+  "dialogStart": "Bắt đầu khám phá",
+  "dialogLogin": "Đăng nhập lại",
+  "dialogTitleForgot": "Mật khẩu của bạn đã được đặt lại thành công",
+  
+  "continueKey":"Tiếp tục"
 }

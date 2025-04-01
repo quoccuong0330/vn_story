@@ -6,7 +6,7 @@ abstract class BaseAuthRepository {
   Future<AppResponse> login(LoginRequest req);
   Future<AppResponse> getOtpRegister(RegisterRequests req);
   Future<AppResponse> register(RegisterRequests req);
-  Future<AppResponse<UserEntity?>> loginWithAccessToken();
-  Future<AppResponse> logout();
   Future<UserEntity?> me();
+  Future<AppResponse> getOtpForgot(ForgotPasswordRequest req);
+  Future<AppResponse> resetPassword(ForgotPasswordRequest req);
 }

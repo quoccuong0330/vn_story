@@ -5,3 +5,4 @@ const gg_icon = 'assets/gg_icon.png';
 const apple_icon = 'assets/apple_icon.png';
 const checked_password = 'assets/checked_password.png';
 const tick = 'assets/check.png';
+const back = 'assets/back.png';

@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:vn_story/blocs/bloc/auth_bloc.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,9 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _timer = Timer(Duration(seconds: 3), () {
-        if (mounted) {
+      _timer = Timer(Duration(seconds: 1), () {
+        final isAuthenticated = context.read<AuthBloc>().state.isAuthenticated;
+        if (mounted && !isAuthenticated) {
           context.go('/login');
+        } else {
+          context.go('/home');
         }
       });
     });

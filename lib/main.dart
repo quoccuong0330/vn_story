@@ -26,7 +26,9 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LocaleProvider()),
-        RepositoryProvider<AuthRepository>(create: (_) => AuthRepository()),
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepository(context: context),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [

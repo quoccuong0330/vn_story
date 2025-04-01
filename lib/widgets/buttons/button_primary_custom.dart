@@ -11,17 +11,19 @@ class ButtonPrimaryCustom extends StatelessWidget {
     this.colorBg,
     this.colorText,
     required this.isProcessing,
+    this.width,
   });
   final String? title;
   final void Function()? onPressed;
   final Color? colorBg;
   final Color? colorText;
   final bool isProcessing;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: width ?? double.infinity,
       height: 44,
       child: ElevatedButton(
         style: ButtonStyle(
@@ -48,7 +50,7 @@ class ButtonPrimaryCustom extends StatelessWidget {
                     strokeWidth: 2,
                   ),
                 )
-                : Text(title!, style: normalText.copyWith(color: colorText)),
+                : Text(title!, style: labelText.copyWith(color: colorText)),
       ),
     );
   }

@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
-import 'package:vn_story/blocs/blocs.dart';
 import 'package:vn_story/cubits/cubits.dart';
 import 'package:vn_story/models/models.dart';
 import 'package:vn_story/models/requests/requests.dart';
@@ -19,7 +17,8 @@ import 'package:vn_story/widgets/dialogs/dialogs_custom.dart';
 import 'package:vn_story/widgets/layouts/auth_layout.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+  const OtpScreen({super.key, required this.type});
+  final String type;
 
   @override
   State<OtpScreen> createState() => OtpScreenState();
@@ -30,7 +29,7 @@ class OtpScreenState extends State<OtpScreen> {
   Timer? _timer;
   String _otp = '';
   bool _isValid = false;
-  final double timeCountDown = 10;
+  final double timeCountDown = 300;
   bool _otpWrong = true;
   bool _isProcessing = false;
 
@@ -64,46 +63,81 @@ class OtpScreenState extends State<OtpScreen> {
     });
   }
 
-  void handleCheckOtp(
+  void handleCheckOtpRegister(
     BuildContext context,
     UserCubit cubit,
     String email,
     String password,
   ) async {
-    if (!context.mounted) return;
+    AppResponse res = await cubit.confirmOtp(
+      RegisterRequests(email: email, password: password, otp: _otp),
+    );
 
-    try {
-      AppResponse res = await cubit.confirmOtp(
-        RegisterRequests(email: email, password: password, otp: _otp),
-      );
-
-      if (!context.mounted) return;
-
-      if (res.success) {
-        if (context.mounted) {
-          context.read<AuthBloc>().add(
-            Authenticated(isAuthenticated: true, token: res.data["access"]),
-          );
-          DialogsCustom.showCompleteDialog(context);
-        }
-      } else {
-        if (context.mounted) {
-          setState(() {
-            _otpWrong = false;
-          });
-        }
+    if (res.success) {
+      if (context.mounted) {
+        DialogsCustom.showCompleteDialog(context, type: "register");
       }
-    } catch (e) {
-      print("error: $e");
+    } else {
+      if (context.mounted) {
+        setState(() {
+          _otpWrong = false;
+        });
+      }
     }
   }
 
-  void handleReSendOTP(UserCubit cubit, String email, String password) async {
-    setState(() {
-      timeLeft = 20;
-      startTimer(timeLeft);
-    });
-    await cubit.signUpOtp(RegisterRequests(email: email, password: password));
+  void handleCheckOtpForgot(
+    BuildContext context,
+    UserCubit cubit,
+    String password,
+    String rePassword,
+  ) async {
+    AppResponse res = await cubit.resetPassword(
+      ForgotPasswordRequest(
+        email: null,
+        password: password,
+        otp: _otp,
+        password2: rePassword,
+      ),
+    );
+
+    if (res.success) {
+      if (context.mounted) {
+        DialogsCustom.showCompleteDialog(context, type: "forgot");
+      }
+    } else {
+      if (context.mounted) {
+        setState(() {
+          _otpWrong = false;
+        });
+      }
+    }
+  }
+
+  void handleReSendOTPRegister(
+    UserCubit cubit,
+    String email,
+    String password,
+  ) async {
+    final res = await cubit.signUpOtp(
+      RegisterRequests(email: email, password: password),
+    );
+    if (res.success) {
+      setState(() {
+        timeLeft = 300;
+        startTimer(timeLeft);
+      });
+    }
+  }
+
+  void handleReSendOTPForgot(UserCubit cubit, String email) async {
+    final res = await cubit.forgotOtp(ForgotPasswordRequest(email: email));
+    if (res.success) {
+      setState(() {
+        timeLeft = 300;
+        startTimer(timeLeft);
+      });
+    }
   }
 
   @override
@@ -112,10 +146,21 @@ class OtpScreenState extends State<OtpScreen> {
     GoRouterState state = GoRouterState.of(context);
     final data = state.extra as Map<String, dynamic>?;
     final cubit = context.read<UserCubit>();
+    String email = "";
+    String password = "";
+    String rePassword = "";
 
-    String email = data != null ? data['email'] : null;
-    String password = data != null ? data['password'] : null;
-    print('email: $email, password: $password');
+    switch (widget.type) {
+      case "register":
+        email = data != null ? data['email'] : null;
+        password = data != null ? data['password'] : null;
+        break;
+      case "forgot":
+        rePassword = data != null ? data['re_password'] : null;
+        password = data != null ? data['password'] : null;
+        email = data != null ? data['email'] : null;
+        break;
+    }
 
     return AuthLayout(
       title: lang.otpScreenTitle,
@@ -210,7 +255,20 @@ class OtpScreenState extends State<OtpScreen> {
                       timeLeft == 0
                           ? GestureDetector(
                             onTap: () {
-                              handleReSendOTP(cubit, email, password);
+                              switch (widget.type) {
+                                case "register":
+                                  {
+                                    handleReSendOTPRegister(
+                                      cubit,
+                                      email,
+                                      password,
+                                    );
+                                  }
+                                case "forgot":
+                                  {
+                                    handleReSendOTPForgot(cubit, email);
+                                  }
+                              }
                             },
                             child: Text(
                               lang.otpScreenResend,
@@ -235,7 +293,24 @@ class OtpScreenState extends State<OtpScreen> {
                   onPressed:
                       _isValid
                           ? () {
-                            handleCheckOtp(context, cubit, email, password);
+                            switch (widget.type) {
+                              case "register":
+                                handleCheckOtpRegister(
+                                  context,
+                                  cubit,
+                                  email,
+                                  password,
+                                );
+                                break;
+                              case "forgot":
+                                handleCheckOtpForgot(
+                                  context,
+                                  cubit,
+                                  password,
+                                  rePassword,
+                                );
+                                break;
+                            }
                           }
                           : null,
                 ),

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
 import 'package:vn_story/utils/constants/text_styles.dart';
@@ -11,10 +13,7 @@ class TitleHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textPainter = TextPainter(
-      text: TextSpan(
-        text: title,
-        style: secondaryH2Text, // ✅ Sử dụng đúng style để đo kích thước
-      ),
+      text: TextSpan(text: title, style: secondaryH2Text),
       maxLines: 1,
       textDirection: TextDirection.ltr,
     )..layout();
@@ -25,7 +24,18 @@ class TitleHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 70),
-            Text(title, style: secondaryH2Text.copyWith(color: black1Color)),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () => context.pop(),
+                  child: Image.asset(back, fit: BoxFit.contain),
+                ),
+                Text(
+                  title,
+                  style: secondaryH3Text.copyWith(color: black1Color),
+                ),
+              ],
+            ),
             SizedBox(
               width: textPainter.width,
               height: 8,

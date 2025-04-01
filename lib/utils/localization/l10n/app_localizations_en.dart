@@ -45,6 +45,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginScreenPasswordValid => 'Password is not valid.';
 
   @override
+  String get loginScreenIncorrectAccount => 'Email or password is not correct.';
+
+  @override
   String get registerScreenTitle => 'Register';
 
   @override
@@ -90,8 +93,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get otpScreenNoReceive => 'Not receive OTP?';
 
   @override
+  String get otpScreenEmailDoesNotExist => 'Email does not exist';
+
+  @override
   String get otpScreenResend => 'Resend';
 
   @override
   String get otpScreenWrong => 'Your OTP entered is not correct';
+
+  @override
+  String get forgotScreenTittle => 'Forgot password';
+
+  @override
+  String get forgotScreenResetTitle => 'Reset password';
+
+  @override
+  String get dialogComplete => 'Completed';
+
+  @override
+  String get dialogTitleRegister => 'Your account was confirm!';
+
+  @override
+  String get dialogStart => 'Start to discover';
+
+  @override
+  String get dialogLogin => 'Login';
+
+  @override
+  String get dialogTitleForgot => 'Your password was successfully changed.';
+
+  @override
+  String get continueKey => 'Continue';
 }

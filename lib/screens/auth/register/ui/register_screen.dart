@@ -52,7 +52,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         _isProcessing = false;
       });
       if (res.success && context.mounted) {
-        context.go(
+        context.push(
           '/otp-register',
           extra: {'email': _email, 'password': _password},
         );

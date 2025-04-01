@@ -45,6 +45,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get loginScreenPasswordValid => 'Password không hợp lệ.';
 
   @override
+  String get loginScreenIncorrectAccount => 'Email hoặc mật khẩu không hợp lệ.';
+
+  @override
   String get registerScreenTitle => 'Đăng kí';
 
   @override
@@ -90,8 +93,35 @@ class AppLocalizationsVi extends AppLocalizations {
   String get otpScreenNoReceive => 'Không nhận được OTP?';
 
   @override
+  String get otpScreenEmailDoesNotExist => 'Email không tồn tại';
+
+  @override
   String get otpScreenResend => 'Gửi lại';
 
   @override
   String get otpScreenWrong => 'OTP bạn vừa nhập không chính xác';
+
+  @override
+  String get forgotScreenTittle => 'Quên mật khẩu';
+
+  @override
+  String get forgotScreenResetTitle => 'Đặt lại mật khẩu';
+
+  @override
+  String get dialogComplete => 'Hoàn tất';
+
+  @override
+  String get dialogTitleRegister => 'Tài khoản của bạn đã được xác nhận!';
+
+  @override
+  String get dialogStart => 'Bắt đầu khám phá';
+
+  @override
+  String get dialogLogin => 'Đăng nhập lại';
+
+  @override
+  String get dialogTitleForgot => 'Mật khẩu của bạn đã được đặt lại thành công';
+
+  @override
+  String get continueKey => 'Tiếp tục';
 }

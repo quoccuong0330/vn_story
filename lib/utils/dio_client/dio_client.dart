@@ -1,24 +1,24 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:vn_story/repositories/core/endpoints.dart';
 import 'package:vn_story/utils/dio_client/app_interception.dart';
 
 class DioClient {
   static DioClient? _singleton;
+  static Dio? _dio;
 
-  static late Dio _dio;
-
-  DioClient._() {
-    _dio = createDioClient();
-  }
+  DioClient._();
 
   factory DioClient() {
     return _singleton ??= DioClient._();
   }
 
-  Dio get instance => _dio;
+  Dio getInstance(BuildContext context) {
+    return _dio ??= createDioClient(context);
+  }
 
-  Dio createDioClient() {
+  Dio createDioClient(BuildContext context) {
     final dio = Dio(
       BaseOptions(
         baseUrl: Endpoints.baseUrl,

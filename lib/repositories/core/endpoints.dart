@@ -6,7 +6,7 @@ class Endpoints {
   static const login = "$_apiVersion/token/";
   static const register = "$_apiVersion/register/";
   static const sendOtpRegister = "$_apiVersion/send-otp-register/";
-  static const forgotPassword = "$_apiVersion/forgot-password/";
+  static const resetPassword = "$_apiVersion/forgot-password/";
   static const sendOtpForgotPassword = "$_apiVersion/send-otp-forgot-password/";
   static const me = "$_apiVersion/me/";
   static const updateProfile = "$_apiVersion/update-profile/";

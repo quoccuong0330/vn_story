@@ -8,6 +8,7 @@ import 'package:vn_story/models/models.dart';
 import 'package:vn_story/models/requests/requests.dart';
 import 'package:vn_story/utils/constants/color_palettes.dart';
 import 'package:vn_story/utils/constants/asset_constants.dart';
+import 'package:vn_story/utils/helpers/validate.dart';
 import 'package:vn_story/utils/localization/l10n/app_localizations.dart';
 import 'package:vn_story/utils/constants/text_styles.dart';
 import 'package:vn_story/widgets/buttons/button_icon_custom.dart';
@@ -32,13 +33,20 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isIncorrectAccount = true;
 
   void handleSignUpByAccount(UserCubit cubit) async {
-    AppResponse res = await cubit.signIn(
-      LoginRequest(email: _email, password: _password),
-    );
-    log(res.success.toString());
-    if (res.success) {
-      context.go("/home");
-    } else {}
+    setState(() {
+      _isValidEmail = Validate.isValidEmail(_email);
+      _isValidPassword = Validate.isValidPassword(_password);
+    });
+    if (_isValidEmail && _isValidPassword) {
+      AppResponse res = await cubit.signIn(
+        LoginRequest(email: _email, password: _password),
+      );
+      if (res.success && context.mounted) {
+        context.replace("/home");
+      } else {
+        _isIncorrectAccount = false;
+      }
+    }
   }
 
   void handleLoginViaGoogle() {
@@ -50,11 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void handleForgotPassword() {
-    log("forgot password");
+    context.push('/forgot');
   }
 
   void handleRegisterNow() {
-    log("register");
     context.push("/register");
   }
 
@@ -62,7 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isRemember = !_isRemember;
     });
-    log(_isRemember.toString());
   }
 
   @override
@@ -153,16 +159,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                Text(
-                  lang.loginScreenForgotPassword,
-                  style: normalText.merge(underlineText),
+                GestureDetector(
+                  onTap: handleForgotPassword,
+                  child: Text(
+                    lang.loginScreenForgotPassword,
+                    style: normalText.merge(underlineText),
+                  ),
                 ),
               ],
             ),
             _isIncorrectAccount
                 ? SizedBox(height: 32)
                 : Text(
-                  "Sai tai khoan hoac mat khau",
+                  lang.loginScreenIncorrectAccount,
                   style: body3Text.copyWith(color: stateErrorColor),
                 ),
             ButtonPrimaryCustom(
@@ -191,7 +200,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(width: 8),
-
                 Text(
                   lang.loginScreenOtherWay,
                   style: body3Text.copyWith(color: gray07Color),
@@ -213,7 +221,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             SizedBox(height: 16),
-
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
